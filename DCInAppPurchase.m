@@ -1,31 +1,29 @@
 //
-//  DCAppPurchase.m
+//  DCInAppPurchase.m
 //
 //  Created by Masaki Hirokawa on 13/08/29.
 //  Copyright (c) 2013 Masaki Hirokawa. All rights reserved.
 //
 
-#import "DCAppPurchase.h"
+#import "DCInAppPurchase.h"
 
-@implementation DCAppPurchase
+@implementation DCInAppPurchase
 
 @synthesize dc_delegate;
 @synthesize delegate;
 
-#pragma mark - Shared Manager
+#pragma mark -
 
-static DCAppPurchase *_sharedInstance = nil;
+static DCInAppPurchase *_sharedInstance = nil;
 
-+ (DCAppPurchase *)sharedManager
++ (DCInAppPurchase *)sharedManager
 {
     if (!_sharedInstance) {
-        _sharedInstance = [[DCAppPurchase alloc] init];
+        _sharedInstance = [[DCInAppPurchase alloc] init];
     }
     
     return _sharedInstance;
 }
-
-#pragma mark - Init
 
 - (id)init
 {

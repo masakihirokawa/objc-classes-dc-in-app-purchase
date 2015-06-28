@@ -1,5 +1,5 @@
 //
-//  DCAppPurchase.h
+//  DCInAppPurchase.h
 //
 //  Created by Masaki Hirokawa on 13/09/02.
 //  Copyright (c) 2013 Masaki Hirokawa. All rights reserved.
@@ -14,17 +14,17 @@
 #define SCREEN_WIDTH        [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT       [[UIScreen mainScreen] bounds].size.height
 
-@protocol DCAppPurchaseDelegate;
+@protocol DCInAppPurchaseDelegate;
 
-@interface DCAppPurchase : NSObject <SKProductsRequestDelegate, SKPaymentTransactionObserver> {
-    id<DCAppPurchaseDelegate> _dc_delegate;
-    id                        _delegate;
-    NSString                  *proccessingProductId;
-    id                        rootView;
-    BOOL                      isProccessing;
-    BOOL                      isRestored;
-    UIActivityIndicatorView   *indicator;
-    UIView                    *indicatorOverlay;
+@interface DCInAppPurchase : NSObject <SKProductsRequestDelegate, SKPaymentTransactionObserver> {
+    id<DCInAppPurchaseDelegate> _dc_delegate;
+    id                          _delegate;
+    NSString                    *proccessingProductId;
+    id                          rootView;
+    BOOL                        isProccessing;
+    BOOL                        isRestored;
+    UIActivityIndicatorView     *indicator;
+    UIView                      *indicatorOverlay;
 }
 
 #pragma mark - enumerator
@@ -35,18 +35,18 @@ typedef NS_ENUM(NSUInteger, activityIndicatorStyles) {
 };
 
 #pragma mark - property
-@property (nonatomic, assign) id<DCAppPurchaseDelegate> dc_delegate;
+@property (nonatomic, assign) id<DCInAppPurchaseDelegate> dc_delegate;
 @property (nonatomic, assign) id delegate;
 
 #pragma mark - public method
-+ (DCAppPurchase *)sharedManager;
++ (DCInAppPurchase *)sharedManager;
 - (void)startPurchase:(NSString *)productId view:(id)view;
 - (void)restorePurchase:(NSString *)productId view:(id)view;
 
 @end
 
 #pragma mark - delegate method
-@protocol DCAppPurchaseDelegate <NSObject>
+@protocol DCInAppPurchaseDelegate <NSObject>
 @optional
-- (void)DCAppPurchaseDidFinish;
+- (void)DCInAppPurchaseDidFinish;
 @end
